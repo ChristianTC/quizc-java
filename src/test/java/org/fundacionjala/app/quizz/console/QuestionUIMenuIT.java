@@ -52,4 +52,17 @@ public class QuestionUIMenuIT {
         Assert.assertFalse(question.getValidations().isEmpty());
         Assert.assertEquals(ValidatorType.REQUIRED, question.getValidations().get(0));
     }
+
+    @Test
+    public void testHandleCreateQuestionWithParameterNumeric() {
+        PowerMockito.mockStatic(InputReader.class);
+        PowerMockito.when(InputReader.readLine()).thenReturn("Test");
+        PowerMockito.when(InputReader.readOption()).thenReturn('1', '0');
+
+        Question question = QuestionUIMenu.handleCreateQuestion();
+
+        Assert.assertEquals("Test", question.getTitle());
+        Assert.assertEquals(QuestionType.TEXT, question.getType());
+        Assert.assertTrue(question.getValidations().isEmpty());
+    }
 }

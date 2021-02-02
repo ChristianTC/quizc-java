@@ -29,12 +29,17 @@ public class QuizUIHandler {
 	}
 
 	public static void showQuiz(QuizAnswers quizAnswers) {
-		System.out.println(quizAnswers.getQuiz().getTitle());
+		System.out.println("QUIZ NAME: " + quizAnswers.getQuiz().getTitle());
 		System.out.println("=============================================");
 
+		System.out.println("Num \t Question \t Answer");
+		int question_count = 0;
 		for (Answer answer : quizAnswers.getAnswers()) {
-			System.out.println(answer);
+			question_count++;
+			System.out.println(question_count + " \t\t " + answer);
 		}
+
+
 
 		System.out.println("=============================================");
 		System.out.println("Press ENTER to continue");
